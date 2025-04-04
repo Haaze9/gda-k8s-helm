@@ -8,7 +8,7 @@ Une release est une version déployer d'une chart
 
 
 
-** Installation de helm **
+**Installation de helm **
 Il existe plusieurs methode d'installation de helm , ici l'installation se fera par script disponible sur le [site officiel de helm](https://helm.sh/docs/intro/install/)
 
 ```
