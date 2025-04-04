@@ -1,0 +1,19 @@
+stores:
+  - name: mesbonslegumes-bio
+    image: hazegoodlife/website-bio:v1
+    hasBioPath: true
+    bioServiceName: mesbonslegumes-bio-service
+    bioContainerPort: 80
+    replicas: 1
+    containerPort: 80
+
+  - name: monbonlait
+    image: hazegoodlife/haaze:milksite
+    replicas: 1
+    containerPort: 80
+
+  - name: mesbonslegumes
+    image: hazegoodlife/haaze:veggiesite
+    replicas: 1
+    containerPort: 80
+

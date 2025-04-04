@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  mystore:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-04T23:17:52.049652579+02:00"
+    description: A Helm chart for Kubernetes
+    digest: 5683719acf9c1ffe4370ddfb10c88794269ea27ce0dafc2c84063517b1a202a5
+    name: mystore
+    type: application
+    urls:
+    - https://haaze9.github.io/gda-k8s-helm/mystore-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-04T23:17:52.036343566+02:00"

@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mysite-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+    - host: monbonlait.fr
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: monbonlait-service
+                port:
+                  number: 80
+    - host: mesbonslegumes.fr
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mesbonslegumes-service
+                port:
+                  number: 80
+          - path: /bio  # Regroupé sous le même host
+            pathType: Prefix
+            backend:
+              service:
+                name: mesbonslegumes-bio-service
+                port:
+                  number: 80

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mesbonslegumes-bio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mesbonslegumes-bio
+  template:
+    metadata:
+      labels:
+        app: mesbonslegumes-bio
+    spec:
+      containers:
+        - name: mesbonslegumes-bio
+          image: hazegoodlife/website-bio:v1
+          ports:
+            - containerPort: 80
+

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monbonlait
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monbonlait
+  template:
+    metadata:
+      labels:
+        app: monbonlait
+    spec:
+      containers:
+        - name: monbonlait
+          image: hazegoodlife/haaze:milksite  # Assurez-vous que cette image est disponible localement
+          ports:
+            - containerPort: 80
+

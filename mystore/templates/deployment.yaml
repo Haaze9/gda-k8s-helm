@@ -1,0 +1,25 @@
+{{- range .Values.stores }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name }}
+  labels:
+    app: {{ .name }}
+spec:
+  replicas: {{ .replicas | default 1 }}  # Défaut : 1 réplica
+  selector:
+    matchLabels:
+      app: {{ .name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .name }}
+    spec:
+      containers:
+      - name: {{ .name }}
+        image: {{ .image }}
+        ports:
+        - containerPort: {{ .containerPort | default 80 }}  # Défaut : port 80
+---
+{{- end }}
+
