@@ -239,8 +239,88 @@ milla@debian-k8s:~/gda-k8s-h3lm$ curl http://monbonlait.fr
   <p>l'amour est dans le pré</p>
 </body>
 </html>
+```
 
 ### Push de la nouvelle chart sur Artifacthub.io
 
-Tout d'abord sur Github dans les paremetres du repo > puis "pages" et selectionner la branche qui servira les pages 
+- Github 
+
+Tout d'abord sur Github dans les paremetres du repo > puis "pages" et selectionner la branche qui servira les pages (le repo doit etre public)
+
+une fois la branche selectionner > Save 
+
+Dans deployments > Pages , on retrouve l'url de la nouvel landing page du dépot . ici https://haaze9.github.io/gda-k8s-helm/
+
+-  Artifact Hub
+
+Crée un compte puis > créer un nouveau repository de type *helm chart* et renseigner l'url recuperer sur github 
+
+Si l'ajout du repo est validé c'est qu'artifacthub.io a bien detecté le fichier index.yml sinon l'ajout sera en erreur 
+
+
+#### Création de la chart 
+Création de la chart et génération d'un index requis pour l'ajout du repos sur artifacthub.io
+l'index contient les informations necessaires pour installation depuis artifacthub.io
+```
+ Exemple d'index :
+ apiVersion: v1
+entries:
+  mystore:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-04T23:17:52.049652579+02:00"
+    description: A Helm chart for Kubernetes
+    digest: 5683719acf9c1ffe4370ddfb10c88794269ea27ce0dafc2c84063517b1a202a5
+    name: mystore
+    type: application
+    urls:
+    - https://haaze9.github.io/gda-k8s-helm/mystore-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-04T23:17:52.036343566+02:00" 
+```
+```
+milla@debian-k8s:~/gda-k8s-h3lm$ helm package ./mystore/
+Successfully packaged chart and saved it to: /home/milla/gda-k8s-h3lm/mystore-0.1.0.tgz
+
+```
+
+### Test de validation - Installation de la chart depuis artifacthub.io
+
+- Ajout et mise à jour du dépot 
+```
+#Ajout du dépot
+
+milla@debian-k8s:~/gda-k8s-h3lm$ helm repo add mes-helm-chart https://haaze9.github.io/gda-k8s-helm/
+"mes-helm-chart" has been added to your repositories
+```
+```
+# Mise à jour
+
+milla@debian-k8s:~/gda-k8s-h3lm$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "mes-helm-chart" chart repository
+...Successfully got an update from the "nextcloud" chart repository
+Update Complete. ⎈Happy Helming!⎈
+```
+- Verification des repo installés
+
+```
+milla@debian-k8s:~/gda-k8s-h3lm$ helm repo list
+NAME            URL                                   
+nextcloud       https://nextcloud.github.io/helm/     
+mes-helm-chart  https://haaze9.github.io/gda-k8s-helm/
+```
+
+- Installation de la chart depuis artifacthub.io
+```
+milla@debian-k8s:~/gda-k8s-h3lm$ helm install mes-magasins mes-helm-chart/mystore --version 0.1.0
+NAME: mes-magasins
+LAST DEPLOYED: Fri Apr  4 23:41:41 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+Déploiement des magasins OK plus qu'a testé CURLLLLLLL
+``` 
 
