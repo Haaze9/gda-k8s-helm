@@ -1,15 +1,15 @@
 # TP HELM
 
-Helm est un gestionaire de packet kubernetes , il permet d'installer des chart
+Helm est un gestionaire de packet kubernetes , il permet d'installer des charts
 
-une Chart est un bloc coherent contenant tout les manifests neccessaire à l'installation de l'application 
+une Chart est un bloc coherent contenant tout les manifests neccessaires à l'installation de l'application 
 
-Une release est une version déployer d'une chart
+Une release est une version déployé d'une chart
 
 
 
-**Installation de helm **
-Il existe plusieurs methode d'installation de helm , ici l'installation se fera par script disponible sur le [site officiel de helm](https://helm.sh/docs/intro/install/)
+**Installation de helm**
+Il existe plusieurs methodes d'installation de helm , ici l'installation se fera par script disponible sur le [site officiel de helm](https://helm.sh/docs/intro/install/)
 
 ```
 $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -30,7 +30,7 @@ version.BuildInfo{Version:"v3.17.2", GitCommit:"cc0bbbd6d6276b83880042c1ecb34087
 
 ## Installation helm Chart Nexcloud
 
-Sur artifacthub.io , recuperer les information pour l'installation de la chart nextcloud 
+Sur artifacthub.io , recuperer les informations pour l'installation de la chart nextcloud 
 
 #### Installation du repo helm nextcloud
 - Installer le repo permettra de recuperer la charte / le package nextcloud 
@@ -51,7 +51,7 @@ NOTES:
 ```
 
 La commande ```Helm get manifest```
- affiche les fichier de ressources (ingress, deployment ..)
+ affiche les fichiers de ressources (ingress, deployment ..)
 
 ## Configuration de la chart , Set  des variable 
 
@@ -75,6 +75,9 @@ milla@debian-k8s:~/gda-k8s-h3lm$ kubectl get po
 NAME                                     READY   STATUS    RESTARTS   AGE
 nxt-release-nextcloud-5bfb7f4d4c-zs7gf   0/1     Running   0          2m4s
 ```
+
+![gui log](https://github.com/user-attachments/assets/7e23d1d0-949d-4f81-99c3-aab2e0dddb18)
+![nextcloud acceuil](https://github.com/user-attachments/assets/bf262651-afa2-4a3d-83ea-d5652df5bab3)
 
 # Création d'une charte personnalisée 
 
@@ -139,7 +142,7 @@ spec:
 ```
 - VALUES.yaml
 
-**Le fichier values.yaml contient les information qui seront recupéré via les variables.**
+**Le fichier values.yaml contient les informations qui seront recupéré via les variables.**
 
 Pour le magasin bio une condition a été crée pour redirigé les requetes vers le bon magasin 
 
@@ -246,10 +249,12 @@ milla@debian-k8s:~/gda-k8s-h3lm$ curl http://monbonlait.fr
 - Github 
 
 Tout d'abord sur Github dans les paremetres du repo > puis "pages" et selectionner la branche qui servira les pages (le repo doit etre public)
+![image](https://github.com/user-attachments/assets/b6bd4d64-3df3-42c1-946f-de2e3e00456c)
 
 une fois la branche selectionner > Save 
 
 Dans deployments > Pages , on retrouve l'url de la nouvel landing page du dépot . ici https://haaze9.github.io/gda-k8s-helm/
+![pages url depo](https://github.com/user-attachments/assets/b961d1f9-83cc-478b-8660-668d3479d03f)
 
 -  Artifact Hub
 
@@ -283,6 +288,7 @@ milla@debian-k8s:~/gda-k8s-h3lm$ helm package ./mystore/
 Successfully packaged chart and saved it to: /home/milla/gda-k8s-h3lm/mystore-0.1.0.tgz
 
 ```
+![Validation création repo sur artifacthub](https://github.com/user-attachments/assets/479f3a47-454f-4a6e-b2ca-c0ce3306dda0)
 
 ### Test de validation - Installation de la chart depuis artifacthub.io
 
@@ -323,4 +329,5 @@ TEST SUITE: None
 NOTES:
 Déploiement des magasins OK plus qu'a testé CURLLLLLLL
 ``` 
+![gui log](https://github.com/user-attachments/assets/4a78b741-f20e-4ecc-b91a-5cb5f2ec6f6f)
 
