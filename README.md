@@ -328,6 +328,7 @@ REVISION: 1
 TEST SUITE: None
 NOTES:
 Déploiement des magasins OK plus qu'a testé CURLLLLLLL
-``` 
-![gui log](https://github.com/user-attachments/assets/4a78b741-f20e-4ecc-b91a-5cb5f2ec6f6f)
+```
+
+![monbonlait Up](https://github.com/user-attachments/assets/6c138540-5fb8-4e8c-abd8-e624de5fcf32)
 
