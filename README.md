@@ -19,7 +19,7 @@ $ ./get_helm.sh
 Verifier l'installation avec la commande ``helm version``
 
 il est possible d'installer la chart sans la modifier . 
-Pour modifier la chart helm intall set --<variables><variable> <NoM de la charte>
+Pour modifier la chart ``helm intall set --  <variables><variable> <NoM de la charte> ``
 
 ---
 
